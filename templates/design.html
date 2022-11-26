@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Design{% endblock title %}
+
+{% block body %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.N.</th>
+        <th scope="col">Number Plate</th>
+        <th scope="col">Measured Speed</th>
+        <th scope="col">Standard Speed</th>
+      </tr>
+    </thead> 
+    <tbody>
+        {%for event in event_list %}
+      <tr>
+        <td></td>
+        <td>{{event.name}}</td>
+        <td>{{event.email}}</td>
+        <td>{{event.phone}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock body  %}
