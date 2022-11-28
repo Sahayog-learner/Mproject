@@ -2,7 +2,7 @@ from django.shortcuts import render
 from home.models import Logins
 from django.contrib import messages
 from .models import Logins
-
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -23,4 +23,13 @@ def login(request):
         login.save()
         messages.success(request, 'Successfully sent!!.')
     return render(request,"login.html")
+
+def registerPage(request):
+    form= UserCreationForm( )
+    context ={'form':form}
+    return render(request,'register.html',context)
+
+def loginPage(request):
+    context ={}
+    return render(request,'login.html',context)
 
