@@ -7,8 +7,8 @@ urlpatterns = [
     path('', views.index,name='home'),
     path('team', views.team,name='team'),
     path('design', views.design,name='design'),
-    #path('login', views.login,name='login'),
+    path('login', views.login,name='login'),
     path('register/',views.registerPage,name='register'),
-    path('login/',views.loginPage,name='login')
+    path('login1/',views.loginPage,name='login1')
 
 ]

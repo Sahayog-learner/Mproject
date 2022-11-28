@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from home.models import Logins
 from django.contrib import messages
 from .models import Logins
@@ -15,7 +15,7 @@ def design(request):
     event_list= Logins.objects.all()
     return render(request,"design.html",{'event_list':event_list})
 
-#def login(request):
+def login(request):
     if request.method=="POST":
         name= request.POST.get('name')
         email= request.POST.get('email')
@@ -32,11 +32,12 @@ def registerPage(request):
         form= CreateUserForm(request.POST )
         if form.is_valid():
              form.save()
+             return redirect('login1')
 
     context ={'form':form}
     return render(request,'register.html',context)
 
 def loginPage(request):
     context ={}
-    return render(request,'login.html',context)
+    return render(request,'login1.html',context)
 
