@@ -1,5 +1,9 @@
-<h3>Regiter</h3>
+<h3>Register</h3>
 <form method="POST" action="">
-     {{form}}
-
+    
+    {% csrf_token %}
+    {{form.as.p}} # makes the given form in paragraph form
+    
+     <input type ="submit" name="Create User">
 </form>
+ 
