@@ -15,7 +15,7 @@ def design(request):
     event_list= Logins.objects.all()
     return render(request,"design.html",{'event_list':event_list})
 
-def login(request):
+#def login(request):
     if request.method=="POST":
         name= request.POST.get('name')
         email= request.POST.get('email')
@@ -26,11 +26,12 @@ def login(request):
     return render(request,"login.html")
 
 def registerPage(request):
-    form= CreateUserForm( )
+    form= CreateUserForm ( )
+
     if request.method == "POST":
         form= CreateUserForm(request.POST )
         if form.is_valid():
-            form.save()
+             form.save()
 
     context ={'form':form}
     return render(request,'register.html',context)
