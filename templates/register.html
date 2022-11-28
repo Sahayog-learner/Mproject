@@ -2,7 +2,7 @@
 <form method="POST" action="">
     
     {% csrf_token %}
-    {{form}} # makes the given form in paragraph form
+    {{form.as_p}} # makes the given form in paragraph form
     
      <input type ="submit" name="Create User">
 </form>
