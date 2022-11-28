@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from home.models import Logins
 from django.contrib import messages
-from .models import Logins
-from django.contrib.auth.forms import UserCreationForm
+#from .models import Logins
+#from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 # Create your views here.
 def index(request):
@@ -32,6 +32,8 @@ def registerPage(request):
         form= CreateUserForm(request.POST )
         if form.is_valid():
              form.save()
+             user= form.cleaned_data.get("username") # for retreiving the username from form registration
+             messages.success(request, 'Account was created for '+ user)
              return redirect('login1')
 
     context ={'form':form}
