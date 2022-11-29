@@ -17,7 +17,7 @@ def design(request):
     event_list= Logins.objects.all()
     return render(request,"design.html",{'event_list':event_list})
 
-#def login_in(request):
+def login_in(request):
     if request.method=="POST":
         name= request.POST.get('name')
         email= request.POST.get('email')
@@ -57,4 +57,9 @@ def loginPage(request):
 
     context ={}
     return render(request,'login1.html',context)
+    
+def logoutUser(request):
+    logout(request)
+    return redirect('login1')
+
 
