@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
+from .forms import CreateUserForm
+from django.contrib.auth import authenticate,login,logout
+
 from home.models import Logins
 from django.contrib import messages
 
-from django.contrib.auth import authenticate,login ,logout
-from .forms import CreateUserForm
+
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -15,7 +17,7 @@ def design(request):
     event_list= Logins.objects.all()
     return render(request,"design.html",{'event_list':event_list})
 
-def login(request):
+#def login_in(request):
     if request.method=="POST":
         name= request.POST.get('name')
         email= request.POST.get('email')
@@ -49,6 +51,9 @@ def loginPage(request):
         if user is not None:
             login(request,user)
             return redirect('index')
+        else :
+            messages.info(request,"Username OR Password is incorrect")
+            
 
     context ={}
     return render(request,'login1.html',context)
