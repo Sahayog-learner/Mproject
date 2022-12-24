@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate,login,logout
 
-from home.models import Logins
+from home.models import Login
 from django.contrib import messages
 
 
@@ -14,10 +14,10 @@ def team(request):
     return render(request,"team.html")
 
 def design(request):
-    event_list= Logins.objects.all()
+    event_list= Login.objects.all()
     return render(request,"design.html",{'event_list':event_list})
 
-def login_in(request):
+#def login_in(request):
     if request.method=="POST":
         name= request.POST.get('name')
         email= request.POST.get('email')
@@ -62,5 +62,12 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('login1')
+
+def push(request):
+    p=Login(number_plate="000",speed="12",s_speed="30")
+    p.save()
+    messages.info(request, 'Successfully Pushed!!.')
+    return render(request,"index.html")
+
 
 
